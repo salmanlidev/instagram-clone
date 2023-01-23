@@ -6,6 +6,7 @@ import authbg from "./authbg.png"
 import mc from "./microsoft.png"
 import googleplay from "./googleplay.png"
 import ilogo from "./Instagram_logo.png"
+import iico from "./iico.png"
 
 export const images = {
     sc1 ,
@@ -15,5 +16,6 @@ export const images = {
     authbg ,
     mc ,
     googleplay ,
-    ilogo
+    ilogo ,
+    iico
 }

@@ -7,3 +7,15 @@
         @apply h-full
     }
 }
+
+@layer components {
+    .active{
+        @apply font-bold
+    }
+    .moreLinks {
+        @apply flex w-full justify-between md:justify-start md:flex-col
+    }
+    .moreBtn{
+        @apply flex items-center gap-x-3 w-full py-3 px-3 rounded-full duration-300 hover:bg-gray-100 text-xl 
+    }
+}

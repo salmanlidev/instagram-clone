@@ -7,17 +7,14 @@ import { Input } from "../../components/Input"
 import { login } from "../../firebase"
 import { sliderData } from "../../assets/data/sliderData"
 import { useNavigate } from "react-router-dom"
-
+import { Formik, Form } from "formik"
+import { LoginSchema } from "../../validation"
 
 const Login = () => {
-  const { user } = useSelector(state => state.auth)
   const imgRef = useRef()
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
 
   const navigate = useNavigate()
 
-  let enable = username && password ? true : false
 
   useEffect(() => {
     let images = imgRef.current.querySelectorAll("img"),
@@ -39,9 +36,9 @@ const Login = () => {
 
   }, [imgRef])
 
-  const handleForm = async (e) => {
-    e.preventDefault()
-    const signin = await login(username, password)
+  const handleForm = async (values) => {
+    console.log(values)
+    const signin = await login(values.username , values.password)
     signin && navigate("/")
   }
 
@@ -61,13 +58,25 @@ const Login = () => {
             <a href="#">
               <img className="h-16 flex-none" alt="logo" src={images.ilogo} />
             </a>
-            <form onSubmit={(e) => handleForm(e)} className="flex flex-col gap-y-5">
-              <div className="flex flex-col items-center gap-y-2">
-                <Input value={username} onChange={(e) => setUsername(e.target.value)} type={"text"} Label="Telefon numarası, kullanıcı adı veya e-posta" />
-                <Input value={password} onChange={(e) => setPassword(e.target.value)} type={"password"} Label="Şifre" />
-              </div>
-              <button onSubmit={(e) => handleForm(e)} disabled={!enable} className="bg-blue-400 text-white rounded-lg h-9 font-bold disabled:opacity-60" type="submit">Giriş yap</button>
-            </form>
+            <Formik
+              validationSchema={LoginSchema}
+              initialValues={{
+                username: "",
+                password: ""
+              }}
+
+              onSubmit={handleForm}
+            >
+              {({ isSubmitting , isValid ,dirty ,values}) => (
+                <Form className="flex flex-col gap-y-5">
+                  <div className="flex flex-col items-center gap-y-2">
+                    <Input name="username" type={"text"} Label="Telefon numarası, kullanıcı adı veya e-posta" />
+                    <Input name="password" type={"password"} Label="Şifre" />
+                  </div>
+                  <button disabled={!isValid || !dirty || isSubmitting} onSubmit={(e) => handleForm(e)} className="bg-blue-400 text-white rounded-lg h-9 font-bold disabled:opacity-60" type="submit">Giriş yap</button>
+                </Form>
+              )}
+            </Formik>
             <div className="flex items-center w-full justify-center gap-x-3">
               <span className="w-[90px] h-[1px] bg-gray-300"></span>
               <p className="font-medium text-gray-400 text-sm">YA DA</p>
