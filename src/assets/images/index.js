@@ -5,7 +5,7 @@ import sc4 from "./sc4.png"
 import authbg from "./authbg.png"
 import mc from "./microsoft.png"
 import googleplay from "./googleplay.png"
-import ilogo from "./instagram_logo.png"
+import ilogo from "./Instagram_logo.png"
 
 export const images = {
     sc1 ,
