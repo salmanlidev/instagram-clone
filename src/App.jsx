@@ -1,16 +1,34 @@
-import { Routes , Route } from "react-router-dom"
-import Login from "./pages/auth/Login"
-import Register from "./pages/auth/Register"
+import { Navigate, useNavigate, useRoutes  } from "react-router-dom"
+import routes from "./routes"
+import { Toaster } from "react-hot-toast"
+import { useSelector } from "react-redux"
+import { Loader } from "./components/Loader"
+import { useState , useEffect } from "react"
+
+
+
 
 
 const App = () => {
+  const { user } = useSelector(state => state.auth)
+  const showRoutes = useRoutes(routes)
+  const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if(loading){
+        setLoading(false)
+      }
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <div className="w-full h-full">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/auth/register" element={<Register />} />
-        </Routes>
-    </div>
+    <>
+      <Toaster position="top-right" />
+      {loading ? <Loader /> :  showRoutes}
+    </>
   )
 }
 

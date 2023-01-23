@@ -4,13 +4,18 @@ import { images } from "../../assets/images"
 import { icons } from "../../assets/icons"
 import { linkData } from "../../assets/data/loginlink"
 import { Input } from "../../components/Input"
+import { login } from "../../firebase"
+import { sliderData } from "../../assets/data/sliderData"
+import { useNavigate } from "react-router-dom"
+
 
 const Login = () => {
-  const { content } = useSelector(state => state.loginSlider)
+  const { user } = useSelector(state => state.auth)
   const imgRef = useRef()
-  const [username , setUsername] = useState("")
-  const [password , setPassword] = useState("")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
+  const navigate = useNavigate()
 
   let enable = username && password ? true : false
 
@@ -20,19 +25,9 @@ const Login = () => {
       current = 0
     images[current].classList.remove("opacity-0")
     const imageSlider = () => {
-      if (current > 0) {
-        images[current - 1].classList.add("opacity-0")
-      }
-      else {
-        images[total - 1].classList.add("opacity-0")
-      }
+      images[(current > 0 ? current : total) - 1].classList.add("opacity-0")
       images[current].classList.remove("opacity-0")
-      if (current === total - 1) {
-        current = 0
-      }
-      else {
-        current++
-      }
+      current = current === total - 1 ? 0 : current + 1
     }
 
     imageSlider()
@@ -41,16 +36,21 @@ const Login = () => {
     return () => {
       clearInterval(interval)
     }
-    
+
   }, [imgRef])
 
+  const handleForm = async (e) => {
+    e.preventDefault()
+    const signin = await login(username, password)
+    signin && navigate("/")
+  }
 
-  console.log(enable)
+
   return (
     <div className="h-full flex items-center justify-center py-52 flex-col gap-10 bg-gray-50">
       <div className="flex w-full justify-center gap-x-7">
         <div className="hidden lg:flex w-[450px] h-[650px] bg-authbg bg-no-repeat bg-[length:468px_634px]  items-center justify-center duration-300 relative" ref={imgRef}>
-          {content.map((img, index) => (
+          {sliderData.map((img, index) => (
             <img key={index} alt="screenshot" src={`${img}`} className="right-[42px] top-7 duration-700 ease-linear opacity-0 absolute" />
           ))}
         </div>
@@ -61,12 +61,12 @@ const Login = () => {
             <a href="#">
               <img className="h-16 flex-none" alt="logo" src={images.ilogo} />
             </a>
-            <form className="flex flex-col gap-y-5">
+            <form onSubmit={(e) => handleForm(e)} className="flex flex-col gap-y-5">
               <div className="flex flex-col items-center gap-y-2">
                 <Input value={username} onChange={(e) => setUsername(e.target.value)} type={"text"} Label="Telefon numarası, kullanıcı adı veya e-posta" />
                 <Input value={password} onChange={(e) => setPassword(e.target.value)} type={"password"} Label="Şifre" />
               </div>
-              <button disabled={!enable} className="bg-blue-400 text-white rounded-lg h-9 font-bold disabled:opacity-60" type="submit">Giriş yap</button>
+              <button onSubmit={(e) => handleForm(e)} disabled={!enable} className="bg-blue-400 text-white rounded-lg h-9 font-bold disabled:opacity-60" type="submit">Giriş yap</button>
             </form>
             <div className="flex items-center w-full justify-center gap-x-3">
               <span className="w-[90px] h-[1px] bg-gray-300"></span>

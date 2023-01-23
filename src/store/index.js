@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import loginSliderReducer from "./features/slider/loginSliderSlice";
+import authSliceReducer from "./features/auth/authSlice";
 
 
 export const store = configureStore({
     reducer : {
-        loginSlider : loginSliderReducer
+        auth : authSliceReducer
     }
 })
