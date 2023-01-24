@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth,onAuthStateChanged ,signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth,onAuthStateChanged ,signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { getFirestore , doc , setDoc } from "firebase/firestore"
 import { toast } from "react-hot-toast";
 import { userHandle } from "./utils";
 
@@ -15,13 +16,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth()
+const db = getFirestore(app)
 
-console.log( "Auth" , auth)
 
 onAuthStateChanged(auth , user => {
-    console.log( "user" , user)
     if(user){
         userHandle({ 
             id : user.uid ,
@@ -40,6 +39,38 @@ export const login = async (email , password) => {
         return true
     }
     catch(err) {
+        toast.error(err.code)
+        return false
+    }
+}
+
+export const register = async ({email , password , full_name , username}) => {
+    try{
+        const response = await createUserWithEmailAndPassword(auth , email , password)
+        toast("Created Account Succesfuly !")
+
+        if(response.user){
+            await setDoc(doc(db , "users" , response.user.uid) ,{
+                fullName : full_name , 
+                username : username ,
+                email : email , 
+                password : password ,
+                followers : [] ,
+                following : [] ,
+                notifications : []
+            })
+
+            await updateProfile(auth.currentUser , {
+                displayName : full_name
+            })
+        }
+
+       
+
+        return true
+    }
+    catch(err) {
+        
         toast.error(err.code)
         return false
     }

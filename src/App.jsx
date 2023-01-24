@@ -12,16 +12,9 @@ import { useState, useEffect } from "react"
 const App = () => {
   const { user } = useSelector(state => state.auth)
   const showRoutes = useRoutes(routes)
-  const [redirect, setRedirect] = useState(false)
+  
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setRedirect(true)
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [])
-
-  if(!user && !redirect ){
+  if(user === null ){
     return <Loader />
   }
 
