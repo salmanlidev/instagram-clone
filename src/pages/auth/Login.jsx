@@ -117,8 +117,7 @@ const Login = () => {
 
           <span>© 2023 Instagram from Meta</span></div>
       </div>
-
-
+      
     </div>
   )
 }

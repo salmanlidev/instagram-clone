@@ -6,6 +6,7 @@ import { RiMessage3Line , RiMenuFill } from "react-icons/ri"
 import { BsHeart , BsPlusSquare , BsInstagram , BsMoon } from "react-icons/bs"
 import { CiTimer } from "react-icons/ci"
 import { FaInstagram } from "react-icons/fa"
+import { IoIosCloseCircle } from "react-icons/io"
 
 export const icons = {
     facebookico : AiFillFacebook ,
@@ -23,5 +24,6 @@ export const icons = {
     moon : BsMoon ,
     timer : CiTimer ,
     alert :  BiMessageAlt ,
-    instagramIco : FaInstagram
+    instagramIco : FaInstagram ,
+    close : IoIosCloseCircle
 }
