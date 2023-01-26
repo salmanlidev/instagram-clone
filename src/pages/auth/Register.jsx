@@ -11,7 +11,7 @@ const Register = () => {
     const handleForm = async (values) => {
         const response = await register(values)
         if(response){
-            navigate("/auth/login")
+            navigate("/")
         }
     }
 
