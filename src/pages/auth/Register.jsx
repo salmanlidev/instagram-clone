@@ -4,15 +4,18 @@ import { Form, Formik } from "formik"
 import { Input } from "../../components/Input"
 import { RegisterSchema } from "../../validation"
 import { register } from "../../firebase"
-import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { Navigate } from "react-router-dom"
 
 const Register = () => {
-    const navigate = useNavigate()
+    const { user } = useSelector(state => state.auth)
+
     const handleForm = async (values) => {
-        const response = await register(values)
-        if(response){
-            navigate("/")
-        }
+        await register(values)
+    }
+
+    if(user) {
+        return <Navigate to={"/"} />
     }
 
     return (
@@ -59,7 +62,7 @@ const Register = () => {
                                 </Form>
                             )}
                         </Formik>
-        
+
                     </div>
 
                     <div className="md:border border-gray-300 flex items-center gap-x-2 justify-center h-14">

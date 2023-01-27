@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "start": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -19,6 +19,8 @@
     "react-icons": "^4.7.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.2",
+    "react-spinners": "^0.13.8",
+    "vite-plugin-rewrite-all": "^1.0.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {

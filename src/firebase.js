@@ -22,15 +22,21 @@ const db = getFirestore(app)
 
 onAuthStateChanged(auth, async user => {
     if (user) {
-        const dbUser = await getDoc(doc(db, "users", user.uid))
-        let data = {
-            uid: user.uid,
-            fullName: user.displayName,
-            email: user.email,
-            emailVerified: user.emailVerified,
-            ...dbUser.data()
-        }
-        userHandle(data)
+        setTimeout(() => {
+            const dbUser =  getDoc(doc(db, "users", user.uid))
+            .then(d => {
+                let data = {
+                    uid: user.uid,
+                    fullName: user.displayName,
+                    email: user.email,
+                    emailVerified: user.emailVerified,
+                    ...d.data()
+                }
+                userHandle(data)
+            })
+            .catch(e => toast.error(e.code))
+        } , 1000)
+       
     }
     else {
         userHandle(false)
@@ -51,6 +57,24 @@ export const login = async (email, password) => {
     }
 }
 
+
+export const getUserInfo = async uname => {
+    try{
+        const username = await getDoc(doc(db, "usernames", uname))
+        if(username.exists()){
+            return await getDoc(doc(db , "users" , username.data().user_id ))
+        }
+        else{
+            toast.error("User not found !")
+            return false
+        }
+    }
+    catch(err){
+
+    }
+}
+
+
 export const register = async ({ email, password, full_name, username }) => {
     try {
         const docSnap = await getDoc(doc(db, "usernames", username))
@@ -59,6 +83,7 @@ export const register = async ({ email, password, full_name, username }) => {
             return false
         }
         else {
+            
             const response = await createUserWithEmailAndPassword(auth, email, password)
             if (response.user) {
                 await setDoc(doc(db, "usernames", username), {
@@ -75,7 +100,15 @@ export const register = async ({ email, password, full_name, username }) => {
                     password: password,
                     followers: [],
                     following: [],
-                    notifications: []
+                    notifications: [] ,
+                    profileImg : "https://images.unsplash.com/photo-1628563694622-5a76957fd09c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW5zdGFncmFtJTIwcHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80" ,
+                    bio :"" ,
+                    phoneNumber : "" ,
+                    website : "" ,
+                    gender : "" ,
+                    posts : [] ,
+                    saved : [] ,
+                    tagged : []
                 })
 
                 await updateProfile(auth.currentUser, {
