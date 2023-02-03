@@ -1,9 +1,11 @@
 import { useRef, useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { icons } from "../../assets/icons"
 import { images } from "../../assets/images"
+import { logout } from "../../firebase"
 import { useWindowSize } from "../../hooks/useWindowSize"
+import { showModal } from "../../store/features/modal/settingsModalSlice"
 import { DefaultIcon } from "./DefaultIcon"
 import { MoreLink } from "./MoreLink"
 import { SearchSide } from "./SearchSide"
@@ -25,6 +27,9 @@ export const Sidebar = () => {
     const moreRef = useRef()
     const [searchSide, setSearchSide] = useState(false)
     const { username , profileImg } = useSelector(state => state.auth.user)
+    const { isOpen } = useSelector(state => state.setModal)
+    const dispatch = useDispatch()
+
 
     useEffect(() => {
         const checkOutside = e => {
@@ -41,6 +46,15 @@ export const Sidebar = () => {
 
     return (
         <div className="flex">
+            <div className={`${isOpen ? "" : "hidden"} fixed inset-0 shadow-lg z-40 flex items-center justify-center`}>
+                <div className="w-[200px] bg-white flex flex-col gap-y-5 items-center justify-center py-4 ">
+                    <button onClick={() => dispatch(showModal())} className="text-2xl ">X</button>
+                    <button onClick={async () => {
+                        await logout()
+                        dispatch(showModal())
+                    }} className="text-red-700 border border-gray-300 px-2 py-1">Log out</button>
+                </div>
+            </div>
             <aside className={`fixed w-full border-t md:static bottom-0 left-0 ${searchSide ? "w-20" : "md:w-20 xl:w-[245px] 2xl:w-[336px]"}  duration-200 md:flex flex-col justify-between bg-white md:border-r border-gray-300 md:py-7 px-4`}>
                 <div className="flex md:flex-col md:gap-y-6">
                     {searchSide ? <div className="flex items-center justify-center">
