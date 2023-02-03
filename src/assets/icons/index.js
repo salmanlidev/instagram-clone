@@ -8,6 +8,9 @@ import { CiTimer } from "react-icons/ci"
 import { FaInstagram } from "react-icons/fa"
 import { IoIosCloseCircle } from "react-icons/io"
 import { SlCamera } from "react-icons/sl"
+import { TbUserPlus } from "react-icons/tb"
+import { HiOutlineDotsHorizontal } from "react-icons/hi"
+ 
 
 export const icons = {
     facebookico : AiFillFacebook ,
@@ -29,5 +32,8 @@ export const icons = {
     close : IoIosCloseCircle , 
     grid : BsGrid3X3 , 
     user : BiUserPin ,
-    camera : SlCamera
+    camera : SlCamera ,
+    addUser : TbUserPlus ,
+    dotHor : HiOutlineDotsHorizontal
+
 }
