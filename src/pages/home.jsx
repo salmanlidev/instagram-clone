@@ -10,10 +10,10 @@ const story = [
 
 const Home = () => {
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col  items-center py-5">
+    <div className="w-full h-full overflow-y-auto flex flex-col  items-center pb-20 pt-2">
       <div className="flex gap-x-14">
         <div className="w-full md:w-[450px] flex flex-col gap-y-3">
-          <header className="w-full flex md:hidden justify-between border-b border-gray-300 py-1 px-3 items-center">
+          <header className="w-full flex md:hidden justify-between border-b border-gray-300 pb-2 px-3 items-center">
             <a href="/" className="flex items-center justify-center"><img className="h-10" src={images.ilogo} alt="logo" /></a>
             <button className="flex justify-center items-center" type="button"><img className="h-7" src={icons.dir} alt="direct" /></button>
           </header>
@@ -22,7 +22,7 @@ const Home = () => {
               <Storyitem key={s} />
             ))}
           </div>
-          <div className="flex flex-col gap-y-3">
+          <div className="flex flex-col gap-y-3 px-2 md:px-0">
             <PostItem />
             <PostItem />
             <PostItem />
