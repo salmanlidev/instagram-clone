@@ -5,8 +5,7 @@ import { Sidebar } from "../components/sidebar/Sidebar"
 
 const PageLayout = () => {
     return (
-        <div className="flex h-full relative">
-                  
+        <div className="flex h-full relative">     
             <Sidebar />
             <Outlet />
         </div>

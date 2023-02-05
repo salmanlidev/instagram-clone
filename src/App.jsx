@@ -21,9 +21,7 @@ const App = () => {
   return (
     <>
       <Toaster position="top-right" />
-      <div className={`${window.location.pathname.includes("auth") ? "hidden" : ""}  border-y border-gray-300 flex md:hidden justify-end p-1`}>
-        <button onClick={() => dispatch(showModal())} type="button" ><icons.settings className="text-3xl" /></button>
-      </div>
+      
      
       {showRoutes}
     </>

@@ -27,4 +27,10 @@
     .profileBtnActive {
         @apply border-t border-black
     }
+    .gallery {
+        @apply columns-2 md:columns-3 py-0 px-3
+    }
+    .pics {
+        @apply mb-3 cursor-pointer hover:scale-105 duration-300
+    }
 }

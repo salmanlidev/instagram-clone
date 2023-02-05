@@ -8,6 +8,7 @@ import Profile from "./pages/profile/profile"
 import { Posts } from "./components/profile/Posts"
 import { ProfileSaved } from "./components/profile/ProfileSaved"
 import { ProfileTagged } from "./components/profile/ProfileTagged"
+import Explore from "./pages/explore/explore"
 
 
 
@@ -39,6 +40,10 @@ const routes = [
                     }
 
                 ]
+            },
+            {
+                path : "/explore" ,
+                element : <Explore />
             }
         ],
         auth: true

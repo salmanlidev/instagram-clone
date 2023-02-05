@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import { getUserInfo } from '../../firebase'
 import { setUser } from '../../store/features/user/userSlice'
 import { BeatLoader } from 'react-spinners'
+import { showModal } from '../../store/features/modal/settingsModalSlice'
+
 
 const Profile = () => {
     const { username } = useParams()
@@ -25,8 +27,13 @@ const Profile = () => {
 
     return (
 
-        <div className=' w-full h-full flex flex-col overflow-y-auto items-center py-2 md:py-9 bg-zinc-50'>
+        <div className=' w-full h-full flex flex-col overflow-y-auto items-center md:py-2 md:py-9 bg-zinc-50'>
             {user ? <>
+                <div className={`${window.location.pathname.includes("auth") ? "hidden" : ""} w-full mb-2 border-y border-gray-300 flex md:hidden justify-between py-1 px-3`}>
+                    <button onClick={() => dispatch(showModal())} type="button" ><icons.settings className="text-3xl" /></button>
+                    <button type='button' className='flex items-center font-bold font-mono'>{user?.username}<icons.downArrow /></button>
+                    <button type='button'><icons.addUser className='text-3xl' /></button>
+                </div>
                 <header className='w-full md:w-[935px] flex items-center justify-between h-[200px] '>
                     <div className='w-52 md:w-96 flex items-start justify-center h-full'>
                         <div className='w-20 h-20 md:w-32 md:h-32 flex items-center justify-center rounded-full'>

@@ -10,6 +10,8 @@ import { IoIosCloseCircle } from "react-icons/io"
 import { SlCamera } from "react-icons/sl"
 import { TbUserPlus } from "react-icons/tb"
 import { HiOutlineDotsHorizontal } from "react-icons/hi"
+import { MdOutlineKeyboardArrowDown } from "react-icons/md"
+import direct from "./dir.png"
  
 
 export const icons = {
@@ -34,6 +36,7 @@ export const icons = {
     user : BiUserPin ,
     camera : SlCamera ,
     addUser : TbUserPlus ,
-    dotHor : HiOutlineDotsHorizontal
-
+    dotHor : HiOutlineDotsHorizontal , 
+    dir : direct , 
+    downArrow : MdOutlineKeyboardArrowDown
 }

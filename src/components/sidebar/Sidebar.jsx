@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { icons } from "../../assets/icons"
 import { images } from "../../assets/images"
 import { logout } from "../../firebase"
@@ -26,9 +26,10 @@ export const Sidebar = () => {
     const [moreScreen, setMoreScreen] = useState(false)
     const moreRef = useRef()
     const [searchSide, setSearchSide] = useState(false)
-    const { username , profileImg } = useSelector(state => state.auth.user)
+    const { username, profileImg } = useSelector(state => state.auth.user)
     const { isOpen } = useSelector(state => state.setModal)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -43,6 +44,15 @@ export const Sidebar = () => {
 
         return () => document.removeEventListener("mousedown", checkOutside)
     })
+
+    const searchBtn = () => {
+        if(width < 768){
+            navigate("/explore")
+        }
+        else {
+            setSearchSide(prev => !prev)
+        }
+    }
 
     return (
         <div className="flex">
@@ -69,19 +79,19 @@ export const Sidebar = () => {
                     <ul className="flex w-full justify-between md:justify-start md:flex-col gap-1">
                         {sidebarLinks.map((link, index) => (
                             <li key={index} className={`h-14 flex items-center ${link.hidden ? "hidden md:inline-block" : ""} ${link.left ? "order-1 md:order-none" : ""}`}>
-                                {link?.button ? <button onClick={() => setSearchSide(prev => !prev)} className={`flex items-center gap-x-3 ${searchSide ? "border border-gray-300 p-2 justify-center" : "p-3"} w-full rounded-full  duration-300 hover:bg-gray-100 text-xl group`}><span className="text-3xl md:text-2xl group-hover:scale-125 duration-300">{link?.icon}</span><span className={`hidden xl:inline-block ${searchSide ? "!hidden" : ""}`}>{link.name}</span></button> : <a className={`flex items-center gap-x-3  w-full py-3 px-3 rounded-full duration-300 hover:bg-gray-100 text-xl group ${window.location.pathname === link.link ? "active" : ""}`} href={`${link?.link}`} ><span className="text-3xl md:text-2xl group-hover:scale-125 duration-300">{link?.icon}</span><span className={`hidden xl:inline-block ${searchSide ? "!hidden" : ""}`}>{link.name}</span></a>}
+                                {link?.button ? <button onClick={searchBtn} className={`flex items-center gap-x-3 ${searchSide ? "border border-gray-300 p-2 justify-center" : "p-3"} w-full rounded-full  duration-300 hover:bg-gray-100 text-xl group`}><span className="text-3xl md:text-2xl group-hover:scale-125 duration-300">{link?.icon}</span><span className={`hidden xl:inline-block ${searchSide ? "!hidden" : ""}`}>{link.name}</span></button> : <a className={`flex items-center gap-x-3  w-full py-3 px-3 rounded-full duration-300 hover:bg-gray-100 text-xl group ${window.location.pathname === link.link ? "active" : ""}`} href={`${link?.link}`} ><span className="text-3xl md:text-2xl group-hover:scale-125 duration-300">{link?.icon}</span><span className={`hidden xl:inline-block ${searchSide ? "!hidden" : ""}`}>{link.name}</span></a>}
                             </li>
                         ))}
                         <li className="h-14 flex items-center order-1 md:order-none" ><Link to={`/${username}`} className="flex items-center gap-x-3  w-full py-3 px-3 rounded-full duration-300 hover:bg-gray-100 text-xl" href={`/${username}`} >{profileImg ? <img src={`${profileImg}`} alt="profileImg" className="w-7 h-7 object-cover  rounded-full" /> : <DefaultIcon />}<span className={`hidden xl:inline-block ${searchSide ? "!hidden" : ""}`}>Profile</span></Link></li>
                     </ul>
                 </div>
 
-                <MoreLink moreRef={moreRef} searchSide={searchSide} setMoreScreen={setMoreScreen}  moreScreen={moreScreen} />
-                            
+                <MoreLink moreRef={moreRef} searchSide={searchSide} setMoreScreen={setMoreScreen} moreScreen={moreScreen} />
+
             </aside>
 
             {/*! searchSide */}
-            
+
             <SearchSide searchSide={searchSide} />
 
         </div>
