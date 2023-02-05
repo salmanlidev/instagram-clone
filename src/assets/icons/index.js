@@ -3,7 +3,7 @@ import { FiSearch } from "react-icons/fi"
 import { MdExplore } from "react-icons/md"
 import { BiMessageAlt , BiMoviePlay, BiBookmark , BiUserPin } from "react-icons/bi"
 import { RiMessage3Line , RiMenuFill } from "react-icons/ri"
-import { BsHeart , BsPlusSquare , BsInstagram , BsMoon , BsGrid3X3 } from "react-icons/bs"
+import { BsHeart , BsPlusSquare , BsInstagram , BsMoon , BsGrid3X3 , BsDot } from "react-icons/bs"
 import { CiTimer } from "react-icons/ci"
 import { FaInstagram } from "react-icons/fa"
 import { IoIosCloseCircle } from "react-icons/io"
@@ -38,5 +38,6 @@ export const icons = {
     addUser : TbUserPlus ,
     dotHor : HiOutlineDotsHorizontal , 
     dir : direct , 
-    downArrow : MdOutlineKeyboardArrowDown
+    downArrow : MdOutlineKeyboardArrowDown ,
+    dot : BsDot
 }
