@@ -2,6 +2,7 @@ import { images } from "../assets/images"
 import { icons } from "../assets/icons"
 import { Storyitem } from "../components/home/Storyitem"
 import { PostItem } from "../components/home/PostItem"
+import { useNavigate } from "react-router-dom"
 
 
 const story = [
@@ -9,13 +10,15 @@ const story = [
 ]
 
 const Home = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="w-full h-full overflow-y-auto flex flex-col  items-center pb-20 pt-2">
       <div className="flex gap-x-14">
         <div className="w-full md:w-[450px] flex flex-col gap-y-3">
           <header className="w-full flex md:hidden justify-between border-b border-gray-300 pb-2 px-3 items-center">
             <a href="/" className="flex items-center justify-center"><img className="h-10" src={images.ilogo} alt="logo" /></a>
-            <button className="flex justify-center items-center" type="button"><img className="h-7" src={icons.dir} alt="direct" /></button>
+            <button onClick={() => navigate("/direct/inbox")} className="flex justify-center items-center" type="button"><img className="h-7" src={icons.dir} alt="direct" /></button>
           </header>
           <div className="w-[370px] md:w-[450px] overflow-x-auto h-20 flex gap-x-3 items-center ">
             {story.map(s => (
