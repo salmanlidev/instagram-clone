@@ -31,7 +31,7 @@ const Explore = () => {
             <div className="gallery">
                 {loading ? <BeatLoader  color="#b6b6b6" className='mt-10' /> : photos.map((photo , index) => (
                     <div className="pics" key={index} >
-                        <LazyLoadImage src={photo?.urls?.full} alt="images" />
+                        <LazyLoadImage src={photo?.urls?.regular} alt="images" />
                     </div>
                 ))}
             </div>

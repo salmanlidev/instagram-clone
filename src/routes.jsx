@@ -1,19 +1,25 @@
-import Home from "./pages/home"
-import Login from "./pages/auth/Login"
-import AuthLayout from "./pages/auth"
+// import Home from "./pages/home"
+// import Login from "./pages/auth/Login"
+// import AuthLayout from "./pages/auth"
 import PrivateRoute from "./components/PrivateRoute"
 import PageLayout from "./pages/PageLayout"
-import Register from "./pages/auth/Register"
-import Profile from "./pages/profile/profile"
+// import Register from "./pages/auth/Register"
+// import Profile from "./pages/profile/profile"
 import { Posts } from "./components/profile/Posts"
 import { ProfileSaved } from "./components/profile/ProfileSaved"
 import { ProfileTagged } from "./components/profile/ProfileTagged"
-import Explore from "./pages/explore/explore"
-import Message from "./pages/messages/message"
-import MessageLayout from "./pages/messages/MessageLayout"
-
-
-
+// import Explore from "./pages/explore/explore"
+// import Message from "./pages/messages/message"
+// import MessageLayout from "./pages/messages/MessageLayout"
+import { lazy , Suspense } from "react"
+const Profile = lazy(() => import("./pages/profile/profile"))
+const Explore = lazy(() => import("./pages/explore/explore"))
+const Message = lazy(() => import("./pages/messages/message"))
+const MessageLayout = lazy(() => import("./pages/messages/MessageLayout"))
+const Home = lazy(() => import("./pages/home"))
+const Login = lazy(() => import("./pages/auth/Login"))
+const Register = lazy(() => import("./pages/auth/Register"))
+const AuthLayout = lazy(() => import("./pages/auth/index"))
 
 const routes = [
     {

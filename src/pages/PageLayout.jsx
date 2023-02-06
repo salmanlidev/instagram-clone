@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { Outlet } from "react-router-dom"
 import { icons } from "../assets/icons"
 import { Sidebar } from "../components/sidebar/Sidebar"
@@ -5,9 +6,11 @@ import { Sidebar } from "../components/sidebar/Sidebar"
 
 const PageLayout = () => {
     return (
-        <div className="flex h-full relative">     
+        <div className="flex h-full relative">
             <Sidebar />
-            <Outlet />
+            <Suspense >
+                <Outlet />
+            </Suspense>
         </div>
     )
 }
