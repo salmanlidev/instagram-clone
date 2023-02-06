@@ -17,7 +17,7 @@ const Home = () => {
             <a href="/" className="flex items-center justify-center"><img className="h-10" src={images.ilogo} alt="logo" /></a>
             <button className="flex justify-center items-center" type="button"><img className="h-7" src={icons.dir} alt="direct" /></button>
           </header>
-          <div className="w-[370px] md:w-[450px] overflow-x-auto h-14 flex gap-x-3 items-center ">
+          <div className="w-[370px] md:w-[450px] overflow-x-auto h-20 flex gap-x-3 items-center ">
             {story.map(s => (
               <Storyitem key={s} />
             ))}

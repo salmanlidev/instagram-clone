@@ -7,7 +7,7 @@ import { BsHeart , BsPlusSquare , BsInstagram , BsMoon , BsGrid3X3 , BsDot } fro
 import { CiTimer } from "react-icons/ci"
 import { FaInstagram } from "react-icons/fa"
 import { IoIosCloseCircle } from "react-icons/io"
-import { SlCamera } from "react-icons/sl"
+import { SlCamera , SlNote } from "react-icons/sl"
 import { TbUserPlus } from "react-icons/tb"
 import { HiOutlineDotsHorizontal } from "react-icons/hi"
 import { MdOutlineKeyboardArrowDown } from "react-icons/md"
@@ -39,5 +39,6 @@ export const icons = {
     dotHor : HiOutlineDotsHorizontal , 
     dir : direct , 
     downArrow : MdOutlineKeyboardArrowDown ,
-    dot : BsDot
+    dot : BsDot ,
+    note : SlNote
 }

@@ -3,34 +3,52 @@
 @tailwind utilities;
 
 @layer base {
-    html , body , #root {
-        @apply h-full 
-    }
+  html,
+  body,
+  #root {
+    @apply h-full;
+  }
 }
 
 @layer components {
-    .active{
-        @apply font-bold 
-    }
-    .moreLinks {
-        @apply flex w-full justify-between md:justify-start md:flex-col
-    }
-    .moreBtn{
-        @apply flex items-center gap-x-3 w-full py-3 px-3 rounded-full duration-300 hover:bg-gray-100 text-xl 
-    }
-    .profileBtn {
-        @apply flex items-center gap-x-2 uppercase text-sm font-medium h-14 px-5 md:px-0
-    }
-    .profileIcon {
-        @apply text-xs font-bold
-    }
-    .profileBtnActive {
-        @apply border-t border-black
-    }
-    .gallery {
-        @apply columns-2 md:columns-3 py-0 px-3
-    }
-    .pics {
-        @apply mb-3 cursor-pointer hover:scale-105 duration-300
-    }
+  .active {
+    @apply font-bold;
+  }
+  .moreLinks {
+    @apply flex w-full justify-between md:justify-start md:flex-col;
+  }
+  .moreBtn {
+    @apply flex items-center gap-x-3 w-full py-3 px-3 rounded-full duration-300 hover:bg-gray-100 text-xl;
+  }
+  .profileBtn {
+    @apply flex items-center gap-x-2 uppercase text-sm font-medium h-14 px-5 md:px-0;
+  }
+  .profileIcon {
+    @apply text-xs font-bold;
+  }
+  .profileBtnActive {
+    @apply border-t border-black;
+  }
+  .gallery {
+    @apply columns-2 md:columns-3 py-0 px-3;
+  }
+  .pics {
+    @apply mb-3 cursor-pointer hover:scale-105 duration-300;
+  }
+  .direct-user {
+    scrollbar-width: auto;
+    scrollbar-color: #a5a1a1 #ffffff;
+    @apply w-full flex flex-col gap-y-2 overflow-y-auto h-full;
+  }
+  .direct-user::-webkit-scrollbar{
+    width: 10px;
+  }
+  .direct-user::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+  .direct-user::-webkit-scrollbar-thumb {
+    background-color: #a5a1a1;
+    border-radius: 14px;
+    border: 3px solid #ffffff;
+  }
 }

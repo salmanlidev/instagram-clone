@@ -8,6 +8,11 @@ import googleplay from "./googleplay.png"
 import ilogo from "./Instagram_logo.png"
 import iico from "./iico.png"
 import empty from "./empty.png"
+import ghostemane from "./ghostemane.jpg" 
+import evo from "./evo.jpg"
+import crystal from "./crystal.jpg" 
+import hidra from "./hidra.jpg"
+import twopac from "./twopac.jpg"
 
 export const images = {
     sc1 ,
@@ -19,5 +24,10 @@ export const images = {
     googleplay ,
     ilogo ,
     iico ,
-    empty
+    empty ,
+    ghostemane ,
+    hidra ,
+    crystal ,
+    evo ,
+    twopac
 }

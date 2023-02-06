@@ -9,6 +9,8 @@ import { Posts } from "./components/profile/Posts"
 import { ProfileSaved } from "./components/profile/ProfileSaved"
 import { ProfileTagged } from "./components/profile/ProfileTagged"
 import Explore from "./pages/explore/explore"
+import Message from "./pages/messages/message"
+import MessageLayout from "./pages/messages/MessageLayout"
 
 
 
@@ -44,6 +46,18 @@ const routes = [
             {
                 path : "/explore" ,
                 element : <Explore />
+            } ,
+            {
+                path : "/direct" ,
+                element : <MessageLayout />  ,
+                children : [
+                    {
+                        path : "inbox" ,
+                        element : <Message />
+                    }
+                    
+
+                ]
             }
         ],
         auth: true

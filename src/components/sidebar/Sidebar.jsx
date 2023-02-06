@@ -15,7 +15,7 @@ const sidebarLinks = [
     { name: "Search", icon: <icons.search />, button: true },
     { name: "Explore", icon: <icons.explore />, hidden: true, link: "/explore" },
     { name: "Reels", icon: <icons.reels />, hidden: true, link: "/reels" },
-    { name: "Messages", icon: <icons.direct />, hidden: true, link: "/messages" },
+    { name: "Messages", icon: <icons.direct />, hidden: true, link: "/direct/inbox" },
     { name: "Notifications", icon: <icons.heart />, left: true, link: "/notifications" },
     { name: "Create", icon: <icons.create />, link: "/create" },
 ]
