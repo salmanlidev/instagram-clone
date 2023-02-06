@@ -25,7 +25,7 @@ const MessageLayout = () => {
     const { user } = useSelector(state => state.auth)
 
     return (
-        <div className="w-full xl:w-1/2 flex mx-auto pb-[11%] md:py-8 ">
+        <div className="w-full xl:w-1/2 flex mx-auto pb-[15%] md:py-8 ">
             <div className="w-full md:w-1/2 flex flex-col border border-gray-300">
                 <div className="flex items-center justify-between border-b border-gray-300 h-14 px-2">
                     <span className="mx-auto font-bold flex items-center gap-x-1">{user.username} <icons.downArrow /></span>
