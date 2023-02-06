@@ -5,7 +5,7 @@ export const SearchSide = ({ searchSide }) => {
     const [searchBtn , setSearchBtn] = useState(true) 
 
     return (
-        <div className={`bg-white shadow-xl duration-100 flex flex-col ${searchSide ? "w-[397px] py-5" : "w-0"}`}>
+        <div className={`bg-white shadow-xl duration-100 dark:bg-black dark:border-r  flex flex-col ${searchSide ? "w-[397px] py-5" : "w-0"}`}>
             <div className={`flex flex-col gap-y-7 border-b border-gray-300 px-3 pb-4 ${searchSide ? "" : "hidden"}`}>
                 <h1 className="text-2xl text-black font-medium">Search</h1>
                 <div className="w-full h-10 bg-gray-100 flex items-center justify-between px-2 cursor-text ">

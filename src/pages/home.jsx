@@ -13,7 +13,7 @@ const Home = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col  items-center pb-20 pt-2">
+    <div className="w-full h-full dark:bg-black dark:text-white overflow-y-auto flex flex-col  items-center pb-20 pt-2">
       <div className="flex gap-x-14">
         <div className="w-full md:w-[450px] flex flex-col gap-y-3">
           <header className="w-full flex md:hidden justify-between border-b border-gray-300 pb-2 px-3 items-center">

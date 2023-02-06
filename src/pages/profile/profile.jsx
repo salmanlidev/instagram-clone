@@ -27,7 +27,7 @@ const Profile = () => {
 
     return (
 
-        <div className=' w-full h-full flex flex-col overflow-y-auto items-center md:py-2 md:py-9 bg-zinc-50'>
+        <div className='w-full h-full dark:bg-black dark:text-white flex flex-col overflow-y-auto items-center md:py-2 md:py-9 bg-zinc-50'>
             {user ? <>
                 <div className={`${window.location.pathname.includes("auth") ? "hidden" : ""} w-full mb-2 border-y border-gray-300 flex md:hidden justify-between py-1 px-3`}>
                     <button onClick={() => dispatch(showModal())} type="button" ><icons.settings className="text-3xl" /></button>
@@ -44,7 +44,7 @@ const Profile = () => {
                         <div className={`flex flex-col md:flex-row md:items-center gap-y-2 gap-x-4`}>
                             <h4 className='text-xl font-mono tracking-wider'>{user?.username}</h4>
                             {username === currentUser ? <>
-                                <button type='button' className='bg-zinc-200 rounded-lg h-8 w-48 px-2 font-medium text-sm'>Edit profile</button>
+                                <button type='button' className='bg-zinc-200 dark:text-black rounded-lg h-8 w-48 px-2 font-medium text-sm'>Edit profile</button>
                                 <button type='button' className='hidden md:block text-3xl'><icons.settings /></button>
                             </> : <>
                                 <div className='flex md:flex-row gap-x-2'>

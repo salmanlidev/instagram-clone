@@ -20,7 +20,7 @@ const Explore = () => {
     console.log(photos)
 
     return (
-        <div className="w-full h-full overflow-y-auto flex flex-col">
+        <div className="w-full h-full dark:bg-black overflow-y-auto flex flex-col">
             <form className="w-full p-2 md:hidden">
                 <div className="w-full px-2 h-10 flex gap-x-2 items-center bg-zinc-200 rounded-lg">
                     <button type="submit" className="flex items-center justify-center text-xl"><icons.search /></button>

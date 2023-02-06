@@ -54,18 +54,30 @@ export const Sidebar = () => {
         }
     }
 
+    const darkMode = () => {
+        if(localStorage.getItem("darkMode")){
+            document.documentElement.classList.remove("dark")
+            localStorage.removeItem("darkMode")
+        }
+        else{
+            document.documentElement.classList.add("dark")
+            localStorage.setItem("darkMode", JSON.stringify(true))
+        }
+    }
+
     return (
-        <div className="flex">
-            <div className={`${isOpen ? "" : "hidden"} fixed inset-0 shadow-lg z-40 flex items-center justify-center`}>
-                <div className="w-[200px] bg-white flex flex-col gap-y-5 items-center justify-center py-4 ">
+        <div className="flex  dark:text-white">
+            <div className={`${isOpen ? "" : "hidden"}  fixed inset-0 shadow-lg z-40 flex items-center justify-center`}>
+                <div className="w-[200px] bg-white dark:bg-black dark:border rounded-lg border flex flex-col gap-y-5 items-center justify-center py-4 ">
                     <button onClick={() => dispatch(showModal())} className="text-2xl ">X</button>
+                    <button className="border border-gray-300 h-7 px-2 rounded-lg" type="button" onClick={darkMode}>Switch appearance</button>
                     <button onClick={async () => {
                         await logout()
                         dispatch(showModal())
                     }} className="text-red-700 border border-gray-300 px-2 py-1">Log out</button>
                 </div>
             </div>
-            <aside className={`fixed w-full border-t md:static bottom-0 left-0 ${searchSide ? "w-20" : "md:w-20 xl:w-[245px] 2xl:w-[336px]"}  duration-200 md:flex flex-col justify-between bg-white md:border-r border-gray-300 md:py-7 px-4`}>
+            <aside className={`fixed dark:bg-black w-full border-t md:static bottom-0 left-0 ${searchSide ? "w-20" : "md:w-20 xl:w-[245px] 2xl:w-[336px]"}  duration-200 md:flex flex-col justify-between bg-white md:border-r border-gray-300 md:py-7 px-4`}>
                 <div className="flex md:flex-col md:gap-y-6">
                     {searchSide ? <div className="flex items-center justify-center">
                         <a href="#" className="flex xl:inline-block items-center justify-center rounded-full hover:bg-gray-50 py-2 xl:py-2 group">

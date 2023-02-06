@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useRoutes } from "react-router-dom"
 import routes from "./routes"
 import { Toaster } from "react-hot-toast"
@@ -17,6 +18,8 @@ const App = () => {
   if (user === null) {
     return <Loader />
   }
+
+  
 
   return (
     <>

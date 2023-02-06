@@ -3,7 +3,7 @@ import { images } from "../../assets/images"
 
 const Message = () => {
     return (
-        <div className="hidden w-full h-full border-y border-r border-gray-300 md:flex flex-col gap-y-3 items-center justify-center">
+        <div className="hidden w-full h-full border-y border-r dark:bg-black dark:text-white border-gray-300 md:flex flex-col gap-y-3 items-center justify-center">
             <div className="w-28 h-28 border border-black rounded-full flex items-center justify-center ">
                 <img className="h-14 mt-3" src={icons.dir} alt="images" />
             </div>

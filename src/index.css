@@ -27,7 +27,7 @@
     @apply text-xs font-bold;
   }
   .profileBtnActive {
-    @apply border-t border-black;
+    @apply border-t border-black dark:border-gray-300;
   }
   .gallery {
     @apply columns-2 md:columns-3 py-0 px-3;
