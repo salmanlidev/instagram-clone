@@ -1,6 +1,6 @@
 // import Home from "./pages/home"
 // import Login from "./pages/auth/Login"
-// import AuthLayout from "./pages/auth"
+import AuthLayout from "./pages/auth"
 import PrivateRoute from "./components/PrivateRoute"
 import PageLayout from "./pages/PageLayout"
 // import Register from "./pages/auth/Register"
@@ -19,7 +19,7 @@ const MessageLayout = lazy(() => import("./pages/messages/MessageLayout"))
 const Home = lazy(() => import("./pages/home"))
 const Login = lazy(() => import("./pages/auth/Login"))
 const Register = lazy(() => import("./pages/auth/Register"))
-const AuthLayout = lazy(() => import("./pages/auth/index"))
+// const AuthLayout = lazy(() => import("./pages/auth/index"))
 
 const routes = [
     {
